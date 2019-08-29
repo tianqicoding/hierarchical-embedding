@@ -32,12 +32,12 @@ from tensorflow.python.framework import ops
 from tensorflow.python.ops import math_ops, control_flow_ops
 from tensorflow.python.training import optimizer
 
-from heat.utils import build_training_samples, hyperboloid_to_poincare_ball, load_data, load_embedding
-from heat.utils import perform_walks, determine_positive_and_negative_samples
-from heat.losses import  hyperbolic_softmax_loss, hyperbolic_sigmoid_loss, hyperbolic_hypersphere_loss
-from heat.generators import TrainingDataGenerator
-from heat.visualise import draw_graph, plot_degree_dist
-from heat.callbacks import Checkpointer
+from hie.utils import build_training_samples, hyperboloid_to_poincare_ball, load_data, load_embedding
+from hie.utils import perform_walks, determine_positive_and_negative_samples
+from hie.losses import  hyperbolic_softmax_loss, hyperbolic_sigmoid_loss, hyperbolic_hypersphere_loss
+from hie.generators import TrainingDataGenerator
+from hie.visualise import draw_graph, plot_degree_dist
+from hie.callbacks import Checkpointer
 
 K.set_floatx("float64")
 K.set_epsilon(1e-15)

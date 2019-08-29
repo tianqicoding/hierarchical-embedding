@@ -1,6 +1,3 @@
-###argv[1] --input
-###argv[2] --embedding file 
-###argv[2] --output file
 
 import sys
 import numpy as np

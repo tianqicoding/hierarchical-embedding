@@ -8,7 +8,7 @@ import pandas as pd
 
 import argparse
 
-from heat.utils import load_embedding, load_data
+from hie.utils import load_embedding, load_data
 
 from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.metrics.pairwise import euclidean_distances
