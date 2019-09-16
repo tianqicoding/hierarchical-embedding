@@ -235,8 +235,8 @@ def parse_args():
 	parser.add_argument("--lr", dest="lr", type=np.float64, default=1.,
 		help="Learning rate (default is 1.).")
 
-	parser.add_argument("-e", "--num_epochs", dest="num_epochs", type=int, default=5,
-		help="The number of epochs to train for (default is 5).")
+	parser.add_argument("-e", "--num_epochs", dest="num_epochs", type=int, default=10,
+		help="The number of epochs to train for (default is 10).")
 	parser.add_argument("-b", "--batch_size", dest="batch_size", type=int, default=50, 
 		help="Batch size for training (default is 50).")
 	parser.add_argument("--nneg", dest="num_negative_samples", type=int, default=10, 
