@@ -4,7 +4,7 @@ embed.py is the file to embed. After that using get_hierarchy.py to get the hier
 
 embed.py: 
 	input: 
-		--edgelist: .csv file, each line as u, v, w as the edge (u, v) with weight w.
+		--edgelist: .tsv file, each line as u, v, w as the edge (u, v) with weight w.
 		-e: number of epochs, default to 10
 		-d: embedding dimension, usually 5
 		--walks: the path to save random walks
@@ -22,7 +22,7 @@ evaluate_reconstruction.py:
 get_hierarchy.py:
 	input:
 		--nodelist: node list
-		--edgelist: edge list
+		--edgelist: edge list, .tsv file
 		--embedding: embedding name
 		--hierarchyfile: file to save hierarchical structure
 		--directed

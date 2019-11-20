@@ -118,6 +118,8 @@ def main():
 	for i in range(positive_pairs.shape[0]):
 		#print(positive_pairs[i])
 		adj[l[positive_pairs[i, 0]]].add(l[positive_pairs[i, 1]])
+		if not args.directed:
+			adj[l[positive_pairs[i, 1]]].add(l[positive_pairs[i, 0]])
 	print(positive_pairs.shape)
 	
 	# adj=defaultdict(set)
@@ -163,6 +165,7 @@ def main():
 	t=test.split('/')
 	filename=t[-1]
 	folder=t[:-1]
+	#if folder:
 	path=os.path.join(*folder)
 	if not os.path.exists(path):
 		os.makedirs(path)
@@ -190,34 +193,34 @@ def main():
 		sons.sort(key=lambda x: x[1])
 		parents.sort(key=lambda x: x[1])
 		same.sort(key=lambda x: x[1])
-		file1.write(word+' norm: '+str(norm[word_id])+'\n')
-		file1.write("There are "+str(len(sons))+ ' hashtags more niche than '+word+': ')
+		file1.write(word.split('.')[0]+' norm: '+str(norm[word_id])+'\n')
+		file1.write("There are "+str(len(sons))+ ' hashtags more niche than '+word.split('.')[0]+': ')
 		for a,b, c in sons:
-			file1.write('('+a+', d: '+str(b)+', '+'delta: '+str(c)+') ')
+			file1.write('('+a.split('.')[0]+', d: '+str(b)+', '+'delta: '+str(c)+') ')
 		file1.write('\n---\n')
-		file1.write("There are "+str(len(parents))+" hashtags more general than "+word+": ")
+		file1.write("There are "+str(len(parents))+" hashtags more general than "+word.split('.')[0]+": ")
 		for a,b, c in parents:
-			file1.write('('+a+', d: '+str(b)+', '+'delta: '+str(c)+') ')
+			file1.write('('+a.split('.')[0]+', d: '+str(b)+', '+'delta: '+str(c)+') ')
 		file1.write('\n---\n')
-		file1.write(str(len(same))+' hashtags parallel with '+word+": ")
+		file1.write(str(len(same))+' hashtags parallel with '+word.split('.')[0]+": ")
 		for a,b, c in same:
-			file1.write('('+a+', d: '+str(b)+', '+'delta: '+str(c)+') ')
+			file1.write('('+a.split('.')[0]+', d: '+str(b)+', '+'delta: '+str(c)+') ')
 		file1.write('\n\n')
 		file1.write('--------------------------------------------------------------\n')
 	print('done', args.test)
 
 
-	if node_coors.shape[1]==3:
-		print ("projecting to poincare ball")
-		embedding = hyperboloid_to_poincare_ball(node_coors)
-		graph = nx.read_weighted_edgelist(sys.argv[1]+'.tsv', delimiter="\t", nodetype=int,
-			create_using=nx.Graph())
-		#print(graph.nodes)
-		V_dic={}
-		for i, a in enumerate(l):
-			V_dic[i]=a
-		draw_graph(graph,#undirected_edges if not args.directed else directed_edges, 
-				embedding, V_dic, path="2d-poincare-disk-"+args.test+".png")
+	# if node_coors.shape[1]==3:
+	# 	print ("projecting to poincare ball")
+	# 	embedding = hyperboloid_to_poincare_ball(node_coors)
+	# 	graph = nx.read_weighted_edgelist(args.nodelist, delimiter="\t", nodetype=int,
+	# 		create_using=nx.Graph())
+	# 	#print(graph.nodes)
+	# 	V_dic={}
+	# 	for i, a in enumerate(l):
+	# 		V_dic[i]=a
+	# 	draw_graph(graph,#undirected_edges if not args.directed else directed_edges, 
+	# 			embedding, V_dic, path="2d-poincare-disk-"+args.test+".png")
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ import numpy as np
 import scipy as sp
 import networkx as nx
 import random
-import heat.pickle4reducer as pickle4reducer
+import hie.pickle4reducer as pickle4reducer
 import functools
 import itertools
 import multiprocessing as mp
